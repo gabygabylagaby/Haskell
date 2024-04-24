@@ -5,6 +5,7 @@
 # h1 Hola 
 # h1 Hola 
 
+
 }
 
 ---
@@ -32,6 +33,8 @@ _sihifhsu_ ikdjfikjds
 
 <https://duckduckgo.com>
 
+
+
 ```
 treeSize :: Tree a -> Integer
 treeSize Empty = 0
@@ -42,6 +45,8 @@ treeSize (Node l _ r) = 1 + treeSize l + treeSize r
 treeSize :: Tree a -> Integer
 treeSize Empty = 0
 ```
+
+~~ https://imgs.search.brave.com/-dz4dB6IZbfGhLixz8WM8wXevHV6PWe58qGPuii0CV4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9keW5s/Lm1rdGdjZG4uY29t/L3AvbVRxT29uVGJa/OVpLQ3BRWDVHdXdr/VFFDSUExdE5veUdf/S3Y1NTd1V3hIRS80/NTB4NDUwLmpwZw
 
 }
 --- 

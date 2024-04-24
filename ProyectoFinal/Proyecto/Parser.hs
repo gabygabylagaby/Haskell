@@ -25,12 +25,14 @@ pMarckdownText = MdParagraph <$> pStrings
                <|> MdItalic <$ pKeyword "_" <*> pStrings <* pKeyword "_"
                <|> pLinkBlock
                <|> MdCode <$ pKeyword "```" <*> pStrings <* pKeyword "```"
+               <|> MdImage <$ pKeyword "~~" <*> pStrings 
             
 pLinkBlock :: Parser Token MarkdownText
 pLinkBlock = pURL
 
 pURL :: Parser Token MarkdownText
-pURL = MdLink URL <$ pKeyword "<" <*> pStrings <* pKeyword ">"
+pURL =  MdLink URL <$> (pKeyword "<" *> pStrings <* pKeyword ">")
+
      
 
 {- 

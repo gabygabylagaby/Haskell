@@ -4,7 +4,7 @@
 <title>Presentación</title>
 <style>
 body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-.slide { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; background-color: #f1f1f1; overflow: hidden; }
+.slide { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; background-size: cover; background-position: center; overflow: hidden; }
 .content { margin: auto; max-width: 800px; }
 .prev, .next { cursor: pointer; position: fixed; top: 50%; width: auto; padding: 16px; margin-top: -50px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0, 0, 0, 0.5); }
 .next { right: 0; border-radius: 3px 0 0 3px; }
@@ -12,7 +12,7 @@ body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
 </style>
 </head>
 <body>
-<div class="slide" style="text-align: center;">
+<div class="slide" style="text-align: center; background-image: url('https://img.freepik.com/vector-gratis/fondo-textura-acuarela-detallada-simbolos-manchas_1048-17565.jpg?w=996&t=st=1713996219~exp=1713996819~hmac=2dd63c5077440a72165b5a3269dc85caecd6cadae9cc94ab63b5d5322cf601b8'); background-size: cover; background-position: center;">
 <h1>Slide 1</h1>
 <div class="content">
 <h1>h1 Hola </h1>
@@ -21,7 +21,7 @@ body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
 <h1>h1 Hola </h1>
 </div>
 </div>
-<div class="slide" style="text-align: center;">
+<div class="slide" style="text-align: center; background-image: url('https://img.freepik.com/vector-gratis/fondo-textura-acuarela-detallada-simbolos-manchas_1048-17565.jpg?w=996&t=st=1713996219~exp=1713996819~hmac=2dd63c5077440a72165b5a3269dc85caecd6cadae9cc94ab63b5d5322cf601b8'); background-size: cover; background-position: center;">
 <h1>Slide 2</h1>
 <div class="content">
 <h1>Hd</h1>
@@ -49,6 +49,7 @@ treeSize (Node l _ r) = 1 + treeSize l + treeSize r
 treeSize :: Tree a -> Integer
 treeSize Empty = 0
 </code>
+    <img src="https://imgs.search.brave.com/-dz4dB6IZbfGhLixz8WM8wXevHV6PWe58qGPuii0CV4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9keW5s/Lm1rdGdjZG4uY29t/L3AvbVRxT29uVGJa/OVpLQ3BRWDVHdXdr/VFFDSUExdE5veUdf/S3Y1NTd1V3hIRS80/NTB4NDUwLmpwZw" alt="">
 </div>
 </div>
 <div class="prev" onclick="plusSlides(-1)">❮ Anterior</div>

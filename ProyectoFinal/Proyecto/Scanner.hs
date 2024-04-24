@@ -87,7 +87,8 @@ scan (x:xs) l c
                 let (token, rest) = span (/= '>') xs
                     tokenLength = length token + 2 -- Include both '<' and '>'
                 in Token Keyword "<" l c : Token String token l (c+1) : Token Keyword ">" l (c + tokenLength + 1) : scan rest l (c + tokenLength + 2)
-  | x == '>' = Token Keyword ">" l c : scan xs l (c + 1)
+  | x == '~' = let (token, rest) = span (\c -> c == '~') (x:xs)
+                         in Token Keyword token l c : scan rest l (c + length token)
   | take 3 (x:xs) == "---" = Token EndSlide "---" l c : scan (drop 3 xs) l (c+3)
   | isNumOrSpace x =
       let (token, rest) = span isNumOrSpace (x:xs)
@@ -97,7 +98,7 @@ scan (x:xs) l c
   | otherwise = Token Error [x] l c : scan xs l (c+1)
   where
     isNumOrSpace :: Char -> Bool
-    isNumOrSpace c = c `elem` "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 "
+    isNumOrSpace c = c `elem` ":/.?=&%-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 "
 
 
 scanExclamationMark :: Input -> Line -> Col -> [Token]
