@@ -2,11 +2,22 @@
 <html>
 <head>
 <title>Presentación</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+.slide { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; background-color: #f1f1f1; overflow: hidden; }
+.content { margin: auto; max-width: 800px; }
+.prev, .next { cursor: pointer; position: fixed; top: 50%; width: auto; padding: 16px; margin-top: -50px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0, 0, 0, 0.5); }
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev:hover, .next:hover { background-color: rgba(0, 0, 0, 0.8); }
+</style>
 </head>
 <body>
 <div class="slide" style="text-align: center;">
 <h1>Slide 1</h1>
 <div class="content">
+<h1>h1 Hola </h1>
+<h1>h1 Hola </h1>
+<h1>h1 Hola </h1>
 <h1>h1 Hola </h1>
 </div>
 </div>
@@ -40,5 +51,19 @@ treeSize Empty = 0
 </code>
 </div>
 </div>
+<div class="prev" onclick="plusSlides(-1)">❮ Anterior</div>
+<div class="next" onclick="plusSlides(1)">Siguiente ❯</div>
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+function plusSlides(n) { showSlides(slideIndex += n); }
+function showSlides(n) {
+var i;
+var slides = document.getElementsByClassName("slide");
+if (n > slides.length) { slideIndex = 1 }
+if (n < 1) { slideIndex = slides.length }
+for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+slides[slideIndex - 1].style.display = "block"; }
+</script>
 </body>
 </html>
