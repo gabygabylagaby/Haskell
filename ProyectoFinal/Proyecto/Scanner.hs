@@ -72,11 +72,13 @@ scan (x:xs) l c
               in Token Keyword token l c : scan rest l (c + tokenLength)
   | x == ';' = scan (dropWhile (/= '\n') xs) (l + 1) 1
   | x == '*' = Token Keyword [x] l c: scan xs l (c+1)
+  | x == '|' = Token Keyword [x] l c: scan xs l (c+1)
+  | x == '°' = Token Keyword [x] l c: scan xs l (c+1)
   | x == '\t' = scan xs l (c + 1)
   | x == '\r' = scan xs l (c + 1)
   | x == ' ' = scan xs l (c+1)
   | x == '\n'= scan xs (l+1) 1
-  | x == '_' = Token Keyword [x] l c: scan xs l (c+1)
+  | x == '|' = Token Keyword [x] l c: scan xs l (c+1)
   | x == '+' = 
                 let (listItem, rest) = span (== '+') (x:xs)
                     tokenLength = length listItem
@@ -85,7 +87,7 @@ scan (x:xs) l c
   | x == '}' = Token EndBlock [x] l c: scan xs l (c+1)
   | x == '<' = 
                 let (token, rest) = span (/= '>') xs
-                    tokenLength = length token + 2 -- Include both '<' and '>'
+                    tokenLength = length token + 2 
                 in Token Keyword "<" l c : Token String token l (c+1) : Token Keyword ">" l (c + tokenLength + 1) : scan rest l (c + tokenLength + 2)
   | x == '~' = let (token, rest) = span (\c -> c == '~') (x:xs)
                          in Token Keyword token l c : scan rest l (c + length token)
@@ -98,7 +100,7 @@ scan (x:xs) l c
   | otherwise = Token Error [x] l c : scan xs l (c+1)
   where
     isNumOrSpace :: Char -> Bool
-    isNumOrSpace c = c `elem` ":/.?=&%-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 "
+    isNumOrSpace c = c `elem` ":/,._?=&%-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 óíéáú"
 
 
 scanExclamationMark :: Input -> Line -> Col -> [Token]

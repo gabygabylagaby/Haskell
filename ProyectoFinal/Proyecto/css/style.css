@@ -1,0 +1,139 @@
+/* Importar estilos de Bootstrap */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.presentation {
+  background-image: url('/Imagen/slide.svg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  width: 80vw; 
+  height: 80vh;
+}
+
+
+.slide {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.slide h1 {
+  text-align: center; 
+  font-size: 3em; 
+  margin-top: 50px; /* Ajusta el margen superior si es necesario */
+}
+
+
+.content {
+  margin: auto;
+  max-width: 800px;
+  width: 100%; 
+
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Estilos para el código resaltado */
+code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  color: #333;
+  background-color: #f8f8f8;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Estilos para el texto en negrita dentro del código */
+code strong {
+  color: #900;
+}
+
+/* Estilos para el texto en cursiva dentro del código */
+code em {
+  color: #090;
+}
+
+/* Añadido el estilo para el contenedor de la diapositiva */
+.presentation-slide {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.2500%;
+  padding-bottom: 0;
+  box-shadow: 0 2px 8px 0 rgba(63, 69, 81, 0.16);
+  margin-top: 1.6em;
+  margin-bottom: 0.9em;
+  overflow: hidden;
+  border-radius: 8px;
+  will-change: transform;
+}
+
+/* Estilos para el iframe dentro del contenedor de la diapositiva */
+.presentation-slide iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.language-haskell {
+  color: #0000FF; 
+}
+
+.slide img {
+  display: block;
+  margin: 0 auto;
+}
+
+
+.content img {
+  display: inline-block; 
+  vertical-align: top; 
+  margin: 0 1%;
+  box-sizing: border-box;
+}
+
+.slide a {
+  color: #0000FF; 
+}

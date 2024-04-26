@@ -22,10 +22,13 @@ pMarckdownText = MdParagraph <$> pStrings
                <|> MdH6 <$ pKeyword "######" <*> pStrings
                <|> MdList <$ pKeyword "+" <*> pStrings
                <|> MdBold <$ pKeyword "*" <*> pStrings <* pKeyword "*"
-               <|> MdItalic <$ pKeyword "_" <*> pStrings <* pKeyword "_"
+               <|> MdItalic <$ pKeyword "|" <*> pStrings <* pKeyword "|"
                <|> pLinkBlock
                <|> MdCode <$ pKeyword "```" <*> pStrings <* pKeyword "```"
                <|> MdImage <$ pKeyword "~~" <*> pStrings 
+               <|> MdListAsterisc <$> pList1 pListAsterisc
+
+pListAsterisc = ListNumeral <$ pKeyword "°" <*> pStrings
             
 pLinkBlock :: Parser Token MarkdownText
 pLinkBlock = pURL

@@ -11,16 +11,8 @@ type H6 = String
 type Bold = String
 type Italic = String
 type Url = String
-type Link = String
 type Code = String
 type Photo = String
-type BlockText = String
-type BlockTextDouble = String
-type NumberList = String
-type BlockList = String
-type NumberList3 = String
-
-type LinkText = String
 type List = String
 
 data Slides = Slides [Slide]
@@ -50,7 +42,11 @@ data MarkdownText = MdParagraph Paragraph
                    | MdItalic Italic
                    | MdLink AutoBlock String
                    | MdCode Code
-                   | MdImage String
+                   | MdImage Photo
+                   | MdListAsterisc [ListAsterisc]
+                    deriving (Show)
+
+data ListAsterisc = ListNumeral Strings
                     deriving (Show)
 
 data AutoBlock = URL 

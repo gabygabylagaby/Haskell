@@ -1,52 +1,148 @@
-! Slide 1
+! Introduccion de Programacion 5
 {
-# h1 Hola 
-# h1 Hola 
-# h1 Hola 
-# h1 Hola 
+# Que es un Functor? 
+
+* Nombre: * Gabriela Garcia Villalobos
 
 
 }
 
 ---
 
-
-! Slide 2
+! Que es?
 {
-# Hd
++ Functor es una clase de tipos en Haskell que permite transformar estructuras de datos mientras se mantiene su forma.
++ Esto se logra a traves de los metodos fmap, que permiten aplicar funciones a los elementos contenidos dentro de la estructura.
+~~ https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3NpnwsYBMze4O8LKNwvBwwDx3OVpTmxEBt9B-1Vzs&s
 
-## h2 js
-### h3 js
-#### h4 js
-##### h5 js
-###### h6 js
-asd
-+ List
-+ List
-+ List
-+ List
-+ List
-+ List
+}
+--- 
 
-*hoal* rerrrwer
-_sihifhsu_ ikdjfikjds
+! La clase de tipo Functor
+{
+# Caracteristicas
 
-<https://duckduckgo.com>
+° Garantiza la composicion de transformaciones sobre estructuras de datos
+° Permite aplicar funciones sobre el contenido de una estructura sin modificar la estructura en si
+° Facilita el trabajo con diferentes tipos de contenedores de una manera unificada
+° Proporciona una interfaz generica para la transformacion de estructuras de datos, preservando su forma original
+
+~~ https://duplode.github.io/images/posts/what-does-fmap-preserve/naturality-diagram.png
+
+}
+--- 
 
 
+! Características de la clase Functor
+{
+
++ Un tipo de datos debe implementar la clase Functor para poder aplicar operaciones como fmap que permiten mapear funciones sobre su estructura interna.
++ La clase Functor es una abstracción que captura la idea de aplicar una función a un valor contenido dentro de una estructura, sin alterar la estructura en sí.
+
+~~ https://bartoszmilewski.files.wordpress.com/2017/02/closed.png
+
+}
+--- 
+
+! Métodos de la clase Functor
+{
+
+## fmap
++ El método fmap permite aplicar una función a los elementos contenidos dentro de una estructura functor, preservando la estructura. Esto permite transformar los valores interiores de manera sistemática.
+## Aplicación de métodos
++ Estos métodos permiten realizar transformaciones y sustituciones de manera elegante dentro de estructuras de datos funcionales, como listas, árboles o quizás monadas.
+}
+--- 
+
+! Ejemplos de tipos de datos Functor
+{
+
+La función fmap permite aplicar una transformación a los elementos internos de un tipo de datos Functor sin alterar su estructura externa. Esto hace que los Functores sean muy útiles para realizar operaciones sobre datos con contexto.
+
+
+~~ https://bartoszmilewski.files.wordpress.com/2015/01/functor.jpg
+}
+--- 
+
+! Functor y Monad
+{
+
+La relación entre Functor y Monad es estrecha, ya que los Monads son un caso especial de Functors. Un Monad es un Functor que también proporciona métodos adicionales para encadenar transformaciones y manejar efectos computacionales.
+
+Los Monads extienden las capacidades de los Functors, permitiendo no solo transformar el contenido, sino también realizar efectos secundarios como |entrada/salida, excepciones o computación no determinista.|
+
+~~ https://blog.ploeh.dk/content/binary/functors-applicatives-monads.png
+}
+--- 
+
+! Ventajas de usar Functor
+{
+
+° Abstracción y Composición: Functor permite abstraer la estructura común de diferentes tipos de datos, facilitando la composición de transformaciones independientes del tipo específico.
+° Manejo de Datos Estructurados: Con Functor, puedes aplicar operaciones a datos estructurados, como listas o árboles, de manera uniforme y sin preocuparte por la estructura subyacente.
+° Código más Expresivo y Reusable: Al usar Functor, tu código se vuelve más expresivo y reutilizable, ya que puedes definir transformaciones genéricas que se aplican a diferentes tipos de datos.
+
+~~ https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Tree_as_a_functor.svg/1200px-Tree_as_a_functor.svg.png
+}
+--- 
+
+! Ejemplo Mingle
+{
+~~ https://i.ibb.co/SXBPpCz/image.png
+}
+--- 
+! Ejemplo
+{
 
 ```
-treeSize :: Tree a -> Integer
-treeSize Empty = 0
-treeSize (Node l _ r) = 1 + treeSize l + treeSize r
-```
+-- Mingle String
+mingledString :: String -> String -> String
+mingledString [] [] = []
+mingledString (x:xs) (y:ys) = x : y : mingledString xs ys
 
-```
-treeSize :: Tree a -> Integer
-treeSize Empty = 0
-```
+data Mingle a = Mingle [a] deriving Show
 
-~~ https://imgs.search.brave.com/-dz4dB6IZbfGhLixz8WM8wXevHV6PWe58qGPuii0CV4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9keW5s/Lm1rdGdjZG4uY29t/L3AvbVRxT29uVGJa/OVpLQ3BRWDVHdXdr/VFFDSUExdE5veUdf/S3Y1NTd1V3hIRS80/NTB4NDUwLmpwZw
+instance Functor Mingle where
+    fmap f (Mingle []) = Mingle []
+    fmap f (Mingle (x:xs)) = Mingle (f x : fmap f xs)
+
+mingledString2 :: String -> String -> String
+mingledString2 [] [] = []
+mingledString2 (x:xs) (y:ys) = x : y : mingledString xs ys
+
+main :: IO ()
+main = do
+    let mingled = mingledString2 "abcde" "pqrst"
+    print mingled
+    let mingled' = mingledString2 "hacker" "ranker"
+    print mingled'
+    let mingled'' = fmap (\c -> [c]) (Mingle mingled)
+    print mingled''
+
+`````
+
+}
+--- 
+
+! Conclusiones
+{
+
+En resumen, la clase de tipo Functor en Haskell proporciona una manera elegante y estructura de transformar los valores contenidos en un contexto funcional. Su principal método, fmap, permite mapear funciones sobre estos contextos, preservando su estructura.
+Las instancias de Functor se implementan fácilmente para una gran variedad de tipos de datos, lo que hace que esta clase de tipo sea ampliamente utilizada en programación funcional. Además, Functor es un paso previo fundamental para entender conceptos más avanzados como Monad.
+
+~~ https://www.adit.io/imgs/functors/fmap_just.png
+}
+--- 
+! Gracias
+{
+
+
+## Referencias
+<https://wiki.haskell.org/Functor>
+
+<https://hackage.haskell.org/package/base-4.19.1.0/docs/Data-Functor.html>
+
+<https://www.tutorialspoint.com/haskell/haskell_functor.htm>
 
 }
 --- 

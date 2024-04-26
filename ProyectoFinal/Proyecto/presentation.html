@@ -2,69 +2,137 @@
 <html>
 <head>
 <title>Presentación</title>
-<style>
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-.slide { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; background-size: cover; background-position: center; overflow: hidden; }
-.content { margin: auto; max-width: 800px; }
-.prev, .next { cursor: pointer; position: fixed; top: 50%; width: auto; padding: 16px; margin-top: -50px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0, 0, 0, 0.5); }
-.next { right: 0; border-radius: 3px 0 0 3px; }
-.prev:hover, .next:hover { background-color: rgba(0, 0, 0, 0.8); }
-</style>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/darcula.min.css">
 </head>
-<body>
-<div class="slide" style="text-align: center; background-image: url('https://img.freepik.com/vector-gratis/fondo-textura-acuarela-detallada-simbolos-manchas_1048-17565.jpg?w=996&t=st=1713996219~exp=1713996819~hmac=2dd63c5077440a72165b5a3269dc85caecd6cadae9cc94ab63b5d5322cf601b8'); background-size: cover; background-position: center;">
-<h1>Slide 1</h1>
+<body class="presentation">
+<div class="slide">
+<h1>Introduccion de Programacion 5</h1>
 <div class="content">
-<h1>h1 Hola </h1>
-<h1>h1 Hola </h1>
-<h1>h1 Hola </h1>
-<h1>h1 Hola </h1>
+<h1>Que es un Functor? </h1>
+<strong>Nombre: </strong><p>Gabriela Garcia Villalobos</p>
 </div>
 </div>
-<div class="slide" style="text-align: center; background-image: url('https://img.freepik.com/vector-gratis/fondo-textura-acuarela-detallada-simbolos-manchas_1048-17565.jpg?w=996&t=st=1713996219~exp=1713996819~hmac=2dd63c5077440a72165b5a3269dc85caecd6cadae9cc94ab63b5d5322cf601b8'); background-size: cover; background-position: center;">
-<h1>Slide 2</h1>
+<div class="slide">
+<h1>Que es?</h1>
 <div class="content">
-<h1>Hd</h1>
-<h2>h2 js</h2>
-<h3>h3 js</h3>
-<h4>h4 js</h4>
-<h5>h5 js</h5>
-<h6>h6 js</h6>
-<p>asd</p>
-<li>List</li>
-<li>List</li>
-<li>List</li>
-<li>List</li>
-<li>List</li>
-<li>List</li>
-<strong>hoal</strong><p>rerrrwer</p>
-<em>sihifhsu</em><p>ikdjfikjds</p>
-<a href="https://duckduckgo.com">https://duckduckgo.com</a>
-<code>`
-treeSize :: Tree a -> Integer
-treeSize Empty = 0
-treeSize (Node l _ r) = 1 + treeSize l + treeSize r
-</code>
-<code>`
-treeSize :: Tree a -> Integer
-treeSize Empty = 0
-</code>
-    <img src="https://imgs.search.brave.com/-dz4dB6IZbfGhLixz8WM8wXevHV6PWe58qGPuii0CV4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9keW5s/Lm1rdGdjZG4uY29t/L3AvbVRxT29uVGJa/OVpLQ3BRWDVHdXdr/VFFDSUExdE5veUdf/S3Y1NTd1V3hIRS80/NTB4NDUwLmpwZw" alt="">
+<li>Functor es una clase de tipos en Haskell que permite transformar estructuras de datos mientras se mantiene su forma.</li>
+<li>Esto se logra a traves de los metodos fmap, que permiten aplicar funciones a los elementos contenidos dentro de la estructura.</li>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3NpnwsYBMze4O8LKNwvBwwDx3OVpTmxEBt9B-1Vzs&s" alt="">
 </div>
+</div>
+<div class="slide">
+<h1>La clase de tipo Functor</h1>
+<div class="content">
+<h1>Caracteristicas</h1>
+<ol>
+<li>Garantiza la composicion de transformaciones sobre estructuras de datos</li>
+<li>Permite aplicar funciones sobre el contenido de una estructura sin modificar la estructura en si</li>
+<li>Facilita el trabajo con diferentes tipos de contenedores de una manera unificada</li>
+<li>Proporciona una interfaz generica para la transformacion de estructuras de datos, preservando su forma original</li>
+</ol>
+    <img src="https://duplode.github.io/images/posts/what-does-fmap-preserve/naturality-diagram.png" alt="">
+</div>
+</div>
+<div class="slide">
+<h1>Características de la clase Functor</h1>
+<div class="content">
+<li>Un tipo de datos debe implementar la clase Functor para poder aplicar operaciones como fmap que permiten mapear funciones sobre su estructura interna.</li>
+<li>La clase Functor es una abstracción que captura la idea de aplicar una función a un valor contenido dentro de una estructura, sin alterar la estructura en sí.</li>
+    <img src="https://bartoszmilewski.files.wordpress.com/2017/02/closed.png" alt="">
+</div>
+</div>
+<div class="slide">
+<h1>Métodos de la clase Functor</h1>
+<div class="content">
+<h2>fmap</h2>
+<li>El método fmap permite aplicar una función a los elementos contenidos dentro de una estructura functor, preservando la estructura. Esto permite transformar los valores interiores de manera sistemática.</li>
+<h2>Aplicación de métodos</h2>
+<li>Estos métodos permiten realizar transformaciones y sustituciones de manera elegante dentro de estructuras de datos funcionales, como listas, árboles o quizás monadas.</li>
+</div>
+</div>
+<div class="slide">
+<h1>Ejemplos de tipos de datos Functor</h1>
+<div class="content">
+<p>La función fmap permite aplicar una transformación a los elementos internos de un tipo de datos Functor sin alterar su estructura externa. Esto hace que los Functores sean muy útiles para realizar operaciones sobre datos con contexto.</p>
+    <img src="https://bartoszmilewski.files.wordpress.com/2015/01/functor.jpg" alt="">
+</div>
+</div>
+<div class="slide">
+<h1>Functor y Monad</h1>
+<div class="content">
+<p>La relación entre Functor y Monad es estrecha, ya que los Monads son un caso especial de Functors. Un Monad es un Functor que también proporciona métodos adicionales para encadenar transformaciones y manejar efectos computacionales.</p>
+<p>Los Monads extienden las capacidades de los Functors, permitiendo no solo transformar el contenido, sino también realizar efectos secundarios como </p>
+<em>entrada/salida, excepciones o computación no determinista.</em>    <img src="https://blog.ploeh.dk/content/binary/functors-applicatives-monads.png" alt="">
+</div>
+</div>
+<div class="slide">
+<h1>Ventajas de usar Functor</h1>
+<div class="content">
+<ol>
+<li>Abstracción y Composición: Functor permite abstraer la estructura común de diferentes tipos de datos, facilitando la composición de transformaciones independientes del tipo específico.</li>
+<li>Manejo de Datos Estructurados: Con Functor, puedes aplicar operaciones a datos estructurados, como listas o árboles, de manera uniforme y sin preocuparte por la estructura subyacente.</li>
+<li>Código más Expresivo y Reusable: Al usar Functor, tu código se vuelve más expresivo y reutilizable, ya que puedes definir transformaciones genéricas que se aplican a diferentes tipos de datos.</li>
+</ol>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Tree_as_a_functor.svg/1200px-Tree_as_a_functor.svg.png" alt="">
+</div>
+</div>
+<div class="slide">
+<h1>Ejemplo Mingle</h1>
+<div class="content">
+    <img src="https://i.ibb.co/SXBPpCz/image.png" alt="">
+</div>
+</div>
+<div class="slide">
+<h1>Ejemplo</h1>
+<div class="content">
+<pre><code class="language-haskell">`
+-- Mingle String
+mingledString :: String -> String -> String
+mingledString [] [] = []
+mingledString (x:xs) (y:ys) = x : y : mingledString xs ys
+
+data Mingle a = Mingle [a] deriving Show
+
+instance Functor Mingle where
+    fmap f (Mingle []) = Mingle []
+    fmap f (Mingle (x:xs)) = Mingle (f x : fmap f xs)
+
+mingledString2 :: String -> String -> String
+mingledString2 [] [] = []
+mingledString2 (x:xs) (y:ys) = x : y : mingledString xs ys
+
+main :: IO ()
+main = do
+    let mingled = mingledString2 "abcde" "pqrst"
+    print mingled
+    let mingled' = mingledString2 "hacker" "ranker"
+    print mingled'
+    let mingled'' = fmap (\c -> [c]) (Mingle mingled)
+    print mingled''
+
+</code></pre>
+</div>
+</div>
+<div class="slide">
+<h1>Conclusiones</h1>
+<div class="content">
+<p>En resumen, la clase de tipo Functor en Haskell proporciona una manera elegante y estructura de transformar los valores contenidos en un contexto funcional. Su principal método, fmap, permite mapear funciones sobre estos contextos, preservando su estructura.</p>
+<p>Las instancias de Functor se implementan fácilmente para una gran variedad de tipos de datos, lo que hace que esta clase de tipo sea ampliamente utilizada en programación funcional. Además, Functor es un paso previo fundamental para entender conceptos más avanzados como Monad.</p>
+    <img src="https://www.adit.io/imgs/functors/fmap_just.png" alt="">
+</div>
+</div>
+<div class="slide">
+<h1>Gracias</h1>
+<div class="content">
+<h2>Referencias</h2>
+<a href="https://wiki.haskell.org/Functor">https://wiki.haskell.org/Functor</a><br> <a href="https://hackage.haskell.org/package/base-4.19.1.0/docs/Data-Functor.html">https://hackage.haskell.org/package/base-4.19.1.0/docs/Data-Functor.html</a><br> <a href="https://www.tutorialspoint.com/haskell/haskell_functor.htm">https://www.tutorialspoint.com/haskell/haskell_functor.htm</a><br> </div>
 </div>
 <div class="prev" onclick="plusSlides(-1)">❮ Anterior</div>
 <div class="next" onclick="plusSlides(1)">Siguiente ❯</div>
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-function plusSlides(n) { showSlides(slideIndex += n); }
-function showSlides(n) {
-var i;
-var slides = document.getElementsByClassName("slide");
-if (n > slides.length) { slideIndex = 1 }
-if (n < 1) { slideIndex = slides.length }
-for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-slides[slideIndex - 1].style.display = "block"; }
-</script>
+<script>hljs.highlightAll();</script>
+<script src="javascript/slides.js"></script>
 </body>
 </html>
